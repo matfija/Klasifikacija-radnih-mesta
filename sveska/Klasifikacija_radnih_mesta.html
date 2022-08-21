@@ -13089,7 +13089,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Klasifikacija-radnih-mesta">Klasifikacija radnih mesta<a id="par:toc" /><a class="anchor-link" href="#Klasifikacija-radnih-mesta">&#182;</a></h2>
+<h2 id="Klasifikacija-radnih-mesta">Klasifikacija radnih mesta<a id="par:nasl" /><a class="anchor-link" href="#Klasifikacija-radnih-mesta">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -13120,7 +13120,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Sadr%C5%BEaj">Sadr&#382;aj<a class="anchor-link" href="#Sadr%C5%BEaj">&#182;</a></h2>
+<h2 id="Sadr%C5%BEaj-%E2%AE%AD">Sadr&#382;aj <a href="#par:nasl">&#11181;</a><a id="par:toc" /><a class="anchor-link" href="#Sadr%C5%BEaj-%E2%AE%AD">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -13128,13 +13128,24 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ol>
-<li><a href="#par:uchit">Učitavanje podataka</a></li>
-<li><a href="#par:anchi">Analiza i čišćenje</a></li>
-<li><a href="#par:norm">Normalizacija teksta</a></li>
-<li><a href="#par:prav">Klasifikaciona pravila</a></li>
-<li><a href="#par:vekt">Vektorizacija teksta</a></li>
-<li><a href="#par:klas">Klasifikacija teksta</a></li>
-<li><a href="#par:rezul">Analiza rezultata</a></li>
+<li><a href="#par:prip">Priprema teksta</a><br>
+ 1.1 <a href="#par:uchit">Učitavanje podataka</a><br>
+ 1.2 <a href="#par:anchi">Analiza i čišćenje</a><br>
+ 1.3 <a href="#par:norm">Normalizacija teksta</a></li>
+<li><a href="#par:vekt">Vektorizacija teksta</a><br>
+ 2.1 <a href="#par:prav">Klasifikaciona pravila</a><br>
+ 2.2 <a href="#par:retk">Retke reprezentacije</a><br>
+ 2.3 <a href="#par:gust">Guste reprezentacije</a></li>
+<li><a href="#par:klas">Klasifikacija teksta</a><br>
+ 3.1 <a href="#par:multi">Višelabelarna klasifikacija</a><br>
+ 3.2 <a href="#par:bajes">Bajesovski klasifikator</a><br>
+ 3.3 <a href="#par:logit">Logistička regresija</a><br>
+ 3.4 <a href="#par:svm">Metod potpornih vektora</a><br>
+ 3.5 <a href="#par:knn">Algoritam najbližih suseda</a></li>
+<li><a href="#par:rezul">Analiza rezultata</a><br>
+ 4.1 <a href="#par:konf">Matrica konfuzije</a><br>
+ 4.2 <a href="#par:mere">Mere uspešnosti</a><br>
+ 4.3 <a href="#par:skor">Skor klasfikatora</a></li>
 </ol>
 
 </div>
@@ -13143,14 +13154,29 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="1.-U%C4%8Ditavanje-podataka-%E2%AE%AD">1. U&#269;itavanje podataka <a href="#par:toc">&#11181;</a><a id="par:uchit" /><a class="anchor-link" href="#1.-U%C4%8Ditavanje-podataka-%E2%AE%AD">&#182;</a></h2>
+<h2 id="1.-Priprema-teksta-%E2%AE%AD">1. Priprema teksta <a href="#par:toc">&#11181;</a><a id="par:prip" /><a class="anchor-link" href="#1.-Priprema-teksta-%E2%AE%AD">&#182;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Za početak, neophodno je učitati dostavljene podatke. Oni se nalaze u pet različitih datoteka, od kojih su prve četiri (<code>20.txt</code>, <code>20-40.txt</code>, <code>40-60.txt</code>, <code>60-100.txt</code>) planirane za pravljenje i evaluaciju modela, dok peta (<code>test_titles.json</code>) sadrži neobeležena radna mesta i namenjena je proveri klasifikacije potpuno novih, nekategorizovanih i nezavisnih podataka. Sve nabrojane datoteke smeštene su u direktorijum <code>podaci</code>.</p>
+<p>Prvi korak u rešavanju svakog problema obrade podataka jeste njihova priprema. Za početak, neophodno ih je učitati iz dostavljenih datoteka. Zatim ih je korisno analizirati i očistiti. Naposletku, važno ih je svesti na neki normalizovani oblik, kako bi se moglo pristupiti naprednijoj obradi poput klasifikacije.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="1.1-U%C4%8Ditavanje-podataka-%E2%AE%AD">1.1 U&#269;itavanje podataka <a href="#par:prip">&#11181;</a><a id="par:uchit" /><a class="anchor-link" href="#1.1-U%C4%8Ditavanje-podataka-%E2%AE%AD">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Podaci se nalaze u pet različitih datoteka, od kojih su prve četiri (<code>20.txt</code>, <code>20-40.txt</code>, <code>40-60.txt</code>, <code>60-100.txt</code>) planirane za pravljenje i evaluaciju modela, dok peta (<code>test_titles.json</code>) sadrži neobeležena radna mesta i namenjena je proveri klasifikacije potpuno novih, nekategorizovanih i nezavisnih podataka. Sve nabrojane datoteke smeštene su u direktorijum <code>podaci</code>, koji nije javno dostupan, mada se pojedine instance mogu videti u svesci.</p>
 
 </div>
 </div>
@@ -13561,7 +13587,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="2.-Analiza-i-%C4%8Di%C5%A1%C4%87enje-%E2%AE%AD">2. Analiza i &#269;i&#353;&#263;enje <a href="#par:toc">&#11181;</a><a id="par:anchi" /><a class="anchor-link" href="#2.-Analiza-i-%C4%8Di%C5%A1%C4%87enje-%E2%AE%AD">&#182;</a></h2>
+<h3 id="1.2-Analiza-i-%C4%8Di%C5%A1%C4%87enje-%E2%AE%AD">1.2 Analiza i &#269;i&#353;&#263;enje <a href="#par:prip">&#11181;</a><a id="par:anchi" /><a class="anchor-link" href="#1.2-Analiza-i-%C4%8Di%C5%A1%C4%87enje-%E2%AE%AD">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -13983,7 +14009,7 @@ Ukupno obeleženih radnih mesta: 35006
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="3.-Normalizacija-teksta-%E2%AE%AD">3. Normalizacija teksta <a href="#par:toc">&#11181;</a><a id="par:norm" /><a class="anchor-link" href="#3.-Normalizacija-teksta-%E2%AE%AD">&#182;</a></h2>
+<h3 id="1.3-Normalizacija-teksta-%E2%AE%AD">1.3 Normalizacija teksta <a href="#par:prip">&#11181;</a><a id="par:norm" /><a class="anchor-link" href="#1.3-Normalizacija-teksta-%E2%AE%AD">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -14714,7 +14740,7 @@ Različitih tokena: 7686
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="4.-Klasifikaciona-pravila-%E2%AE%AD">4. Klasifikaciona pravila <a href="#par:toc">&#11181;</a><a id="par:prav" /><a class="anchor-link" href="#4.-Klasifikaciona-pravila-%E2%AE%AD">&#182;</a></h2>
+<h2 id="2.-Vektorizacija-teksta-%E2%AE%AD">2. Vektorizacija teksta <a href="#par:toc">&#11181;</a><a id="par:vekt" /><a class="anchor-link" href="#2.-Vektorizacija-teksta-%E2%AE%AD">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -14729,7 +14755,14 @@ Različitih tokena: 7686
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Postavlja se pitanje kako od teksta napraviti vektor. Ideja se može pronaći u simboličkom <em>NLP</em>-ju, kao prvoj etapi razvoja obrade prirodnih jezika. On zagovara upotrebu <a href="https://en.wikipedia.org/wiki/Classification_rule">klasifikacionih pravila</a>, koja direktno rade nad tekstom ili nizom tokena. Npr. može se pretpostaviti da svako ime koje sadrži reč <em>manager</em> predstavlja jednog menadžera (klasa <em>manager</em>), dok svaki potpredsednik (klasa <em>vp</em>) sadrži reč <em>vice</em>. Ovakva <a href="https://en.wikipedia.org/wiki/Association_rule_learning">pravila pridruživanja</a> mogu se i automatski pronaći.</p>
+<h3 id="2.1-Klasifikaciona-pravila-%E2%AE%AD">2.1 Klasifikaciona pravila <a href="#par:vekt">&#11181;</a><a id="par:prav" /><a class="anchor-link" href="#2.1-Klasifikaciona-pravila-%E2%AE%AD">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Postavlja se pitanje kako od teksta napraviti vektor. Ideja se može pronaći u simboličkom <em>NLP</em>-ju, kao prvoj etapi obrade prirodnih jezika. On zagovara direktnu upotrebu <a href="https://en.wikipedia.org/wiki/Classification_rule">klasifikacionih pravila</a> koja rade nad tekstom ili nizom tokena. Npr. može se pretpostaviti da svako ime koje sadrži reč <em>manager</em> predstavlja jednog menadžera (klasa <em>manager</em>), dok svaki potpredsednik (klasa <em>vp</em>) sadrži reč <em>vice</em>. Ovakva pravila mogu se i automatski pronaći <a href="https://en.wikipedia.org/wiki/Rule_induction">indukcijom</a>.</p>
 
 </div>
 </div>
@@ -14954,7 +14987,7 @@ campaign alliances manager [&#39;senior&#39;]
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="5.-Vektorizacija-teksta-%E2%AE%AD">5. Vektorizacija teksta <a href="#par:toc">&#11181;</a><a id="par:vekt" /><a class="anchor-link" href="#5.-Vektorizacija-teksta-%E2%AE%AD">&#182;</a></h2>
+<h3 id="2.2-Retke-reprezentacije-%E2%AE%AD">2.2 Retke reprezentacije <a href="#par:vekt">&#11181;</a><a id="par:retk" /><a class="anchor-link" href="#2.2-Retke-reprezentacije-%E2%AE%AD">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -15367,6 +15400,13 @@ Radnih mesta u skupu za proveru: 8267
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="2.3-Guste-reprezentacije-%E2%AE%AD">2.3 Guste reprezentacije <a href="#par:vekt">&#11181;</a><a id="par:gust" /><a class="anchor-link" href="#2.3-Guste-reprezentacije-%E2%AE%AD">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>Upotreba retkih reprezentacija uz metode mašinskog učenja odlika je statističkog <em>NLP</em>-ja, kao druge etape razvoja obrade prirodnih jezika. U aktuelnoj, trećoj etapi, fokus je na dubokom učenju i gustim reprezentacijama. Za razliku od prethodno razmatranih vektora, koji su izrazito dugački (na konkretnom primeru: 1895, po jedan atribut za svaku različitu reč u trening skupu), ali retki (na konkretnom primeru: najviše desetak nenula vrednosti), nove reprezentacije imaju znatno manji broj karakteristika realnog tipa, pri čemu nijedna nije nula. Osmišljeni su tako da su <a href="https://en.wikipedia.org/wiki/Cosine_similarity">kosinusno</a> sličniji vektori koji opisuju sličnije tekstove.</p>
 
 </div>
@@ -15601,14 +15641,29 @@ Vectorization done on cpu
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="6.-Klasifikacija-teksta-%E2%AE%AD">6. Klasifikacija teksta <a href="#par:toc">&#11181;</a><a id="par:klas" /><a class="anchor-link" href="#6.-Klasifikacija-teksta-%E2%AE%AD">&#182;</a></h2>
+<h2 id="3.-Klasifikacija-teksta-%E2%AE%AD">3. Klasifikacija teksta <a href="#par:toc">&#11181;</a><a id="par:klas" /><a class="anchor-link" href="#3.-Klasifikacija-teksta-%E2%AE%AD">&#182;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Nakon što je tekst uspešno vektorizovan, konačno ga je moguće klasifikovati. <a href="https://en.wikipedia.org/wiki/Statistical_classification">Klasifikacija</a> je problem određivanja kojim klasama (kategorijama) neki objekat pripada. U konkretnom slučaju, objekti su radna mesta, a klase nivoi senioriteta. Kako instanci može biti pridruženo više oznaka, reč je o <a href="https://en.wikipedia.org/wiki/Multi-label_classification">višelabelarnoj klasifikaciji</a>, što znači da se traži (neprazan) skup oznaka. Na ilustraciji je instanca slika, dok su klase tipovi objekata koji su prepoznati na slici.</p>
+<p>Nakon što je tekst uspešno vektorizovan, konačno ga je moguće klasifikovati. <a href="https://en.wikipedia.org/wiki/Statistical_classification">Klasifikacija</a> je problem određivanja kojim klasama (kategorijama) neki objekat pripada, odnosno učenje optimalne funkcije odluke. U konkretnom slučaju, objekti su radna mesta (tekstualna ili vektorizovana), a klase nivoi senioriteta.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="3.1-Vi%C5%A1elabelarna-klasifikacija-%E2%AE%AD">3.1 Vi&#353;elabelarna klasifikacija <a href="#par:klas">&#11181;</a><a id="par:multi" /><a class="anchor-link" href="#3.1-Vi%C5%A1elabelarna-klasifikacija-%E2%AE%AD">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Kada instanci može biti pridruženo više oznaka, reč je o <a href="https://en.wikipedia.org/wiki/Multi-label_classification">višelabelarnoj klasifikaciji</a>, što znači da se traži (neprazan) skup oznaka. Upravo je to slučaj kod razmatranih radnih mesta. S druge strane, na ilustraciji koja sledi instanca je slika, dok su klase tipovi objekata koji su prepoznati na slici.</p>
 
 </div>
 </div>
@@ -15828,6 +15883,13 @@ Vectorization done on cpu
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="3.2-Bajesovski-klasifikator-%E2%AE%AD">3.2 Bajesovski klasifikator <a href="#par:klas">&#11181;</a><a id="par:bajes" /><a class="anchor-link" href="#3.2-Bajesovski-klasifikator-%E2%AE%AD">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>Sada je sve spremno za samu klasifikaciju. Jedan od najpoznatijih klasifikatora teksta jeste <a href="https://en.wikipedia.org/wiki/Naive_Bayes_classifier">naivni Bajes</a>. Ovaj <a href="https://en.wikipedia.org/wiki/Probabilistic_classification">probabilistički model</a> na osnovu skupa za obučavanje izračunava apriorne verovatnoće (<a href="https://en.wikipedia.org/wiki/Prior_probability"><em>prior</em></a>) svake od klasa, kao i uslovnu raspodelu (<a href="https://en.wikipedia.org/wiki/Likelihood_function"><em>likelihood</em></a>) svakog atributa u svakoj klasi. Kako zapravo modeluje zajedničku raspodelu atributa i klasa, naivni Bajes je <a href="https://en.wikipedia.org/wiki/Generative_model">generativni model</a>. U fazi predviđanja, model <a href="https://en.wikipedia.org/wiki/Maximum_a_posteriori_estimation">maksimizuje aposteriornu verovatnoću</a> (<em>MAP</em>) po klasama. Naivna (u teoriji jaka, ali u praksi korisna) pretpostavka modela jeste uslovna nezavisnost pojedinačnih atributa u svakoj klasi, takva da se uslovna verovatnoća složenog vektora atributa u svakoj klasi dobija množenjem jednostavnih uslovnih verovatnoća pojedinačnih atributa u istoj klasi.</p>
 
 </div>
@@ -15888,6 +15950,13 @@ Vectorization done on cpu
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="3.3-Logisti%C4%8Dka-regresija-%E2%AE%AD">3.3 Logisti&#269;ka regresija <a href="#par:klas">&#11181;</a><a id="par:logit" /><a class="anchor-link" href="#3.3-Logisti%C4%8Dka-regresija-%E2%AE%AD">&#182;</a></h3>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -15959,6 +16028,13 @@ Vectorization done on cpu
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="3.4-Metod-potpornih-vektora-%E2%AE%AD">3.4 Metod potpornih vektora <a href="#par:klas">&#11181;</a><a id="par:svm" /><a class="anchor-link" href="#3.4-Metod-potpornih-vektora-%E2%AE%AD">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>Još jedan poznati matematički zasnovan klasifikator jeste <a href="https://en.wikipedia.org/wiki/Support-vector_machine">metod potpornih vektora</a> (<em>SVM</em>). Osnovna ideja je da se u vektorskom prostoru podataka pronađe najbolja hiperravan koja dobro razdvaja instance iz različitih klasa. U fazi obučavanja, takva hiperravan nalazi se maksimizacijom širine razdvajajućeg pojasa (margine), odnosno minimizacijom norme vektora ravni. Optimizacija se, očekivano, odvija pod uslovom što bolje klasfikacije skupa za obučavanje. Drugim rečima, optimizatoru se nameće ograničenje sa koje strane ravni treba da se nalazi koja instanca, pa se minimizuje <a href="https://en.wikipedia.org/wiki/Hinge_loss">greška u vidu šarke</a> (<em>hinge</em>).</p>
 
 </div>
@@ -16022,6 +16098,13 @@ Vectorization done on cpu
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="3.5-Algoritam-najbli%C5%BEih-suseda-%E2%AE%AD">3.5 Algoritam najbli&#382;ih suseda <a href="#par:klas">&#11181;</a><a id="par:knn" /><a class="anchor-link" href="#3.5-Algoritam-najbli%C5%BEih-suseda-%E2%AE%AD">&#182;</a></h3>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -16123,15 +16206,22 @@ Vectorization done on cpu
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="7.-Analiza-rezultata-%E2%AE%AD">7. Analiza rezultata <a href="#par:toc">&#11181;</a><a id="par:rezul" /><a class="anchor-link" href="#7.-Analiza-rezultata-%E2%AE%AD">&#182;</a></h2>
+<h2 id="4.-Analiza-rezultata-%E2%AE%AD">4. Analiza rezultata <a href="#par:toc">&#11181;</a><a id="par:rezul" /><a class="anchor-link" href="#4.-Analiza-rezultata-%E2%AE%AD">&#182;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Svi klasifikacioni modeli ukalupljuju se u obeleženi skup za obučavanje. Parametri modela podešavaju se tako da predviđene klase u fazi predikcije budu što sličnije prosleđenim obeležjima, odnosno da greška bude što manja. Naravno, ne očekuje se da se model savršeno prilagodi trening skupu. To bi, štaviše, bilo problematično jer bi se izgubilo na generalizaciji i naziva se problemom <a href="https://en.wikipedia.org/wiki/Overfitting">preprilagođavanja</a>. S druge strane, može doći i do potprilagođavanja, kada model ne uspeva da uhvati pravilnosti u podacima. Poželjno je u fazi provere oceniti moć modela i generalizacije. Takođe, korisno je pokušati sa interpretacijom načina na koji prediktor radi. Detaljnije informacije o klasifikaciji i njenoj uspešnosti mogu se naći u <a href="https://web.stanford.edu/~jurafsky/slp3/4.pdf">četvrtom</a> poglavlju poznate knjige <em>SLP</em>.</p>
+<p>Svi klasifikacioni modeli ukalupljuju se u obeleženi skup za obučavanje. Parametri modela podešavaju se tako da predviđene klase u fazi predikcije budu što sličnije prosleđenim obeležjima, odnosno da greška bude što manja. Naravno, ne očekuje se da se model savršeno prilagodi trening skupu. To bi, štaviše, bilo problematično jer bi se izgubilo na generalizaciji i naziva se problemom <a href="https://en.wikipedia.org/wiki/Overfitting">preprilagođavanja</a>. S druge strane, može doći i do potprilagođavanja, kada model ne uspeva da uhvati pravilnosti u podacima. Poželjno je u fazi provere oceniti moć modela i generalizacije. Takođe, korisno je pokušati sa interpretacijom načina na koji prediktor radi, odnosno kako donosi odluke. Detaljnije informacije o klasifikaciji i njenoj uspešnosti mogu se naći u <a href="https://web.stanford.edu/~jurafsky/slp3/4.pdf">četvrtom</a> poglavlju knjige <em>SLP</em>.</p>
 
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4.1-Matrica-konfuzije-%E2%AE%AD">4.1 Matrica konfuzije <a href="#par:rezul">&#11181;</a><a id="par:konf" /><a class="anchor-link" href="#4.1-Matrica-konfuzije-%E2%AE%AD">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -16374,6 +16464,13 @@ Vectorization done on cpu
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4.2-Mere-uspe%C5%A1nosti-%E2%AE%AD">4.2 Mere uspe&#353;nosti <a href="#par:rezul">&#11181;</a><a id="par:mere" /><a class="anchor-link" href="#4.2-Mere-uspe%C5%A1nosti-%E2%AE%AD">&#182;</a></h3>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -17069,6 +17166,13 @@ $$ ACC = \frac{TP + TN}{TP + TN + FP + FN} \; \; — \; \text{tačnost,} $$$$ TP
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4.3-Skor-klasifikatora-%E2%AE%AD">4.3 Skor klasifikatora <a href="#par:rezul">&#11181;</a><a id="par:skor" /><a class="anchor-link" href="#4.3-Skor-klasifikatora-%E2%AE%AD">&#182;</a></h3>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
